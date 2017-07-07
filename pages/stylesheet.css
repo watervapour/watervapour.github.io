@@ -1,5 +1,8 @@
+* {
+	margin: auto;
+}
+
 body {
-  align: center;
   text-align: center;
   background-color: RGB(60,60,60);
   color: RGB(200,200,200);
