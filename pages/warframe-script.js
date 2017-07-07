@@ -1,6 +1,6 @@
 function gogogo() {
 	var searchTerm, array;
-	searchTerm = document.getElementById("searchbar").value;
+	searchTerm = document.getElementById("searchbar").value.toUpperCase();
 	relicArray=[];
 	
 	//search
