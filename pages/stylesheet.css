@@ -23,6 +23,12 @@ a:visited {
 a:hover {
   color: RGB(102,61,0);
 }
-a:active {
-  
+a:active {  
+}
+
+img.greyscale {
+ -webkit-filter: grayscale(100%);
+}
+img.greyscale:hover {
+ -webkit-filter: grayscale(0%);
 }
