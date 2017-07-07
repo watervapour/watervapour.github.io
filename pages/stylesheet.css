@@ -35,3 +35,7 @@ img.greyscale {
 img.greyscale:hover {
  -webkit-filter: grayscale(0%);
 }
+
+table, th, td {
+	border: 1px solid black;
+}
