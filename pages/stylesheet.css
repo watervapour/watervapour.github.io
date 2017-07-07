@@ -9,3 +9,16 @@ body {
 h1 {
  color: RGB(102,204,255); 
 }
+
+a:link {
+  color: RGB(190,190,190);
+}
+a:visited {
+  color: RGB(100,100,100);
+}
+a:hover {
+  color: RGB(102,61,0);
+}
+a:active {
+  
+}
