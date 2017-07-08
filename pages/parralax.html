@@ -5,15 +5,20 @@
   <link rel="stylesheet" href="../pages/stylesheet.css" type="text/css">
   <script>
 	function nudge() {
-	var x = event.clientX;
-	var y = event.clientY;
-	var coor = "X coords: " + x + ", Y coords: " + y;
-	document.getElementById("para").innerHTML = coor;
+	var xcent = window.innerWidth / 2
+	var ycent = window.innerHeight / 2
 	
-	var xmuted = (x + 500) /10;
-	var ymuted = (x + 500) / 10;
+	var x = event.clientX - xcent;
+	var y = event.clientY - ycent;
 	
-	document.getElementById("par-target").style.left = xmuted + 'px';
+	var xm = x / 10 + xcent; 
+	var ym = y / 10 + ycent;
+	
+	var mcoords = "muted x: " + xm + ", muted y: " + ym;
+	document.getElementById("paramute").innerHTML = mcoords;
+	
+	document.getElementById("par-target").style.left = xm + 'px';
+	document.getElementById("par-target").style.top = ym + 'px';
 	}
   </script>
 </head>
@@ -24,5 +29,6 @@
   <br><br>
   <br>
   <p id="para">aaa</p>
+  <p id="paramute"></p>
 </body>
 </html>
