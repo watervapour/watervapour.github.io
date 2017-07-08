@@ -29,6 +29,13 @@ a:hover {
 a:active {  
 }
 
+img.paralax {
+	position: absolute;
+}
+img.parbg { 
+	position: relative;
+}
+
 img.greyscale {
  -webkit-filter: grayscale(100%);
 }
