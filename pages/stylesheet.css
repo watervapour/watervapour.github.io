@@ -29,10 +29,10 @@ a:hover {
 a:active {  
 }
 
-img.paralax {
+img.parallaxbg {
 	position: absolute;
 }
-img.parbg { 
+img.parallaxlayer { 
 	position: relative;
 }
 

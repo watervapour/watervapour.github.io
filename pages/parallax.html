@@ -4,30 +4,39 @@
   <title>paralax</title>
   <link rel="stylesheet" href="../pages/stylesheet.css" type="text/css">
   <script>
-	function nudge() {
-	var xcent = window.innerWidth / 2
-	var ycent = window.innerHeight / 2
+	function parallaxMountain() {
+	var bg = document.getElementById("par-bg");
+	var rect1 = bg.getBoundingClientRect();
+	var xcent = rect1.left + rect1.width * 0.5
+	var ycent = rect1.top + rect1.height * 0.5
 	
-	var x = event.clientX - xcent;
-	var y = event.clientY - ycent;
+	var x = event.clientX;
+	var y = event.clienY;
+	var xm1 = x / 20 + xcent; 
+	var ym1 = y / 20 + ycent;
+	var xm2 = x / 10 + xcent; 
+	var ym2 = y / 10 + ycent;
 	
-	var xm = x / 10 + xcent; 
-	var ym = y / 10 + ycent;
+	document.getElementById("par-L1").style.left = xm1 + 'px';
+	document.getElementById("par-L1").style.top = ym1 + 'px';
+	document.getElementById("par-L2").style.left = xm2 + 'px';
+	document.getElementById("par-L2").style.top = ym2 + 'px';
 	
-	var mcoords = "muted x: " + xm + ", muted y: " + ym;
-	document.getElementById("paramute").innerHTML = mcoords;
-	
-	document.getElementById("par-target").style.left = xm + 'px';
-	document.getElementById("par-target").style.top = ym + 'px';
+	var coordreadout = xm1 + " : " + ym1 + " -- " + xm2 + " : " + ym2;
+	document.getElementById("coordP").innerHTML = coordreadout;
 	}
   </script>
 </head>
-<body onmousemove="nudge()">
+<body onmousemove="parallaxMountain()">
   <h1>Super amature paralaxing</h1>
-  <img src="../resources/parallax-outrun.png" height="500" width="800"style="top: 30px; left: 5px;" id="par-bg" class="parbg">
-  <img src="../resources/rainmeter-outrun-clock.PNG" height="64" width="64" style="top: 300px; left: 500px;" id="par-target" class="parallax">
+  <div>
+	<img src="../resources/parallax-bg.png" height="200" width="500" id="par-bg" class="parallaxbg" style="z-index: -1; position: absolute;">
+	<img src="../resources/parallax-l1.png" height="200" width="500" id="par-L1" class="parallaxlayer" style="z-index: 1; top: 0px; left: 0px; position: relative;">
+	<img src="../resources/parallax-l2.png" height="200" width="500" id="par-L2" class="parallaxlayer" style="z-index: 2; top: 0px; left: 0px; position: relative;">
+  </div>
   <br><br>
   <br>
-  <p id="paramute"></p>
+  aa
+  <p id="coordP"></p>
 </body>
 </html>
