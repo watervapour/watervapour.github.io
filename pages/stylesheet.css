@@ -29,15 +29,6 @@ a:hover {
 a:active {  
 }
 
-img.parallaxbg {
-	image-rendering: pixelated;
-	position: absolute;
-}
-img.parallaxlayer { 
-	image-rendering: pixelated;
-	position: absolute;
-}
-
 img.greyscale {
  -webkit-filter: grayscale(100%);
 }

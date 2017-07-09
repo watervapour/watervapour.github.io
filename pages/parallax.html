@@ -16,28 +16,24 @@
 	var x = event.clientX - xcent;
 	var y = event.clientY - ycent;
 	var xm1 = bgx + (x / 20); 
-	var ym1 = bgy + (y / 20);
+	var ym1 = bgy + (y / 30);
 	var xm2 = bgx + (x / 10); 
-	var ym2 = bgy + (y / 10);
+	var ym2 = bgy + (y / 15);
 	
 	document.getElementById("par-L1").style.left = xm1 + 'px';
 	document.getElementById("par-L1").style.top = ym1 + 'px';
 	document.getElementById("par-L2").style.left = xm2 + 'px';
 	document.getElementById("par-L2").style.top = ym2 + 'px';
 	
-	
-	//document.getElementById("coordCent").innerHTML = bgx + ":" + bgy +"||"+ x +":"+ y +" | " + xcent + ":" + ycent;
-	//var coordreadout = xm1 + " : " + ym1 + " || " + xm2 + " : " + ym2;
-	//document.getElementById("coordxym").innerHTML = coordreadout;
 	}
   </script>
 </head>
 <body>
   <h1>Super amature paralaxing</h1>
-  <div onmousemove="parallaxMountain()">
-	<img src="../resources/parallax-bg.png" height="200" width="500" id="par-bg" class="parallaxbg" style="z-index: -1; position: absolute;">
-	<img src="../resources/parallax-l1.png" height="200" width="500" id="par-L1" class="parallaxlayer" style="z-index: 1; position: absolute;">
-	<img src="../resources/parallax-l2.png" height="200" width="500" id="par-L2" class="parallaxlayer" style="z-index: 2; position: absolute;">
+  <div onmousemove="parallaxMountain()" id="parallax-mountain-div">
+	<img src="../resources/parallax-mountain-bg.png" height="200" width="500" id="par-bg" class="parallaxbg" style="z-index: -1; image-rendering: pixelated; position: absolute; ">
+	<img src="../resources/parallax-mountain-l1.png" height="200" width="500" id="par-L1" class="parallaxlayer" style="z-index: 1; image-rendering: pixelated; position: absolute; ">
+	<img src="../resources/parallax-mountain-l2.png" height="200" width="500" id="par-L2" class="parallaxlayer" style="z-index: 2; image-rendering: pixelated; position: absolute;">
   </div>
   <br><br>
   <br><br>
@@ -45,7 +41,6 @@
   <br><br>
   <br><br>
   <br><br>
-  <p id="coordCent">
-  <p id="coordxym"></p>
+  <p id="para"></p>
 </body>
 </html>
