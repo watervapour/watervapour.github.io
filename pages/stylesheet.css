@@ -35,7 +35,7 @@ img.parallaxbg {
 }
 img.parallaxlayer { 
 	image-rendering: pixelated;
-	position: relative;
+	position: absolute;
 }
 
 img.greyscale {

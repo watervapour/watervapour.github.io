@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>paralax</title>
+  <title>Parallax</title>
   <link rel="stylesheet" href="../pages/stylesheet.css" type="text/css">
   <script>
 	function parallaxMountain() {
 	var bg = document.getElementById("par-bg");
 	var rect1 = bg.getBoundingClientRect();
-	var xcent = rect1.left + rect1.width * 0.5
-	var ycent = rect1.top + rect1.height * 0.5
+	var xcent = rect1.left + rect1.width * 0.5;
+	var ycent = rect1.top + rect1.height * 0.5;
 	
-	var x = event.clientX;
-	var y = event.clienY;
-	var xm1 = x / 20 + xcent; 
-	var ym1 = y / 20 + ycent;
-	var xm2 = x / 10 + xcent; 
-	var ym2 = y / 10 + ycent;
+	var bgx = rect1.left;
+	var bgy = rect1.top;
+	
+	var x = event.clientX - xcent;
+	var y = event.clientY - ycent;
+	var xm1 = bgx + (x / 20); 
+	var ym1 = bgy + (y / 20);
+	var xm2 = bgx + (x / 10); 
+	var ym2 = bgy + (y / 10);
 	
 	document.getElementById("par-L1").style.left = xm1 + 'px';
 	document.getElementById("par-L1").style.top = ym1 + 'px';
 	document.getElementById("par-L2").style.left = xm2 + 'px';
 	document.getElementById("par-L2").style.top = ym2 + 'px';
 	
-	var coordreadout = xm1 + " : " + ym1 + " -- " + xm2 + " : " + ym2;
-	document.getElementById("coordP").innerHTML = coordreadout;
+	
+	//document.getElementById("coordCent").innerHTML = bgx + ":" + bgy +"||"+ x +":"+ y +" | " + xcent + ":" + ycent;
+	//var coordreadout = xm1 + " : " + ym1 + " || " + xm2 + " : " + ym2;
+	//document.getElementById("coordxym").innerHTML = coordreadout;
 	}
   </script>
 </head>
-<body onmousemove="parallaxMountain()">
+<body>
   <h1>Super amature paralaxing</h1>
-  <div>
+  <div onmousemove="parallaxMountain()">
 	<img src="../resources/parallax-bg.png" height="200" width="500" id="par-bg" class="parallaxbg" style="z-index: -1; position: absolute;">
-	<img src="../resources/parallax-l1.png" height="200" width="500" id="par-L1" class="parallaxlayer" style="z-index: 1; top: 0px; left: 0px; position: relative;">
-	<img src="../resources/parallax-l2.png" height="200" width="500" id="par-L2" class="parallaxlayer" style="z-index: 2; top: 0px; left: 0px; position: relative;">
+	<img src="../resources/parallax-l1.png" height="200" width="500" id="par-L1" class="parallaxlayer" style="z-index: 1; position: absolute;">
+	<img src="../resources/parallax-l2.png" height="200" width="500" id="par-L2" class="parallaxlayer" style="z-index: 2; position: absolute;">
   </div>
   <br><br>
-  <br>
-  aa
-  <p id="coordP"></p>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <p id="coordCent">
+  <p id="coordxym"></p>
 </body>
 </html>
