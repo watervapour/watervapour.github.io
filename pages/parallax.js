@@ -16,16 +16,16 @@ function parallax(caller){
 		// get layer 
 		var layerId = initiator + "-L" + j;
 		var layerElem = document.getElementById(layerId);
-		console.log(layerId);
+		console.table(layerElem.getAttribute("xRange"));
 		if (layerElem){	// check is element exists
-			var xPercent = layerElem.data-xRange / 100; 
-			var yPercent = layerElem.data-yRange / 100;
-			document.getElementById("para").innerHTML = xPercent;
-			//move amount
-			var xMove = xCent + mouseX / xPercent;
-			var yMove = yCent + mouseY / yPercent;
-			console.log(xMove);
-			console.log(yMove);
+			//var xPercent = layerElem.attributes[5].xRange / 100; 
+			//var yPercent = layerElem.attributes[5].yRange / 100;
+			//document.getElementById("para").innerHTML = xPercent;
+				//move amount
+			var xMove = xCent + mouseX / 20; //xPercent;
+			var yMove = yCent + mouseY / 10; //yPercent;
+			console.table(xMove);
+			console.table(yMove);
 			layerElem.style.left = xMove + "px";
 			layerElem.style.top = yMove + "px";
 		} else {
