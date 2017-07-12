@@ -9,6 +9,7 @@ function parallax(caller){
 	var mouseX = event.clientX - xCent;
 	var mouseY = event.clientY - yCent;
 	
+
 	// a for loop for unknown amount of elements
 	var elsExist = true;
 	var j = 1;
@@ -16,18 +17,20 @@ function parallax(caller){
 		// get layer 
 		var layerId = initiator + "-L" + j;
 		var layerElem = document.getElementById(layerId);
-		console.table(layerElem.getAttribute("xRange"));
 		if (layerElem){	// check is element exists
-			//var xPercent = layerElem.attributes[5].xRange / 100; 
-			//var yPercent = layerElem.attributes[5].yRange / 100;
-			//document.getElementById("para").innerHTML = xPercent;
+			var xPercent = layerElem.dataset.xrange / 100; 
+			var yPercent = layerElem.dataset.yrange / 100;
 				//move amount
-			var xMove = xCent + mouseX / 20; //xPercent;
-			var yMove = yCent + mouseY / 10; //yPercent;
-			console.table(xMove);
-			console.table(yMove);
+			var xMove = rect.left + (mouseX * xPercent);
+			var yMove = rect.top + (mouseY * yPercent);
+			
+			//var info = [{"rectLeft":rect.left,"rectTop":rect.top,"MX":mouseX,"MY":mouseY,"X%":xPercent,"Y%":yPercent}]
+			//console.table(info);
 			layerElem.style.left = xMove + "px";
 			layerElem.style.top = yMove + "px";
+			
+			document.getElementById('para').innerHTML = xMove + "|" + yMove;
+			
 		} else {
 			elsExist = false;
 		}
