@@ -29,6 +29,11 @@ a:hover {
 a:active {  
 }
 
+img.pixel {
+	image-rendering: pixelated;
+	position: absolute;
+}
+
 img.greyscale {
  -webkit-filter: grayscale(100%);
 }

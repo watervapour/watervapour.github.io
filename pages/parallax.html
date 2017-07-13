@@ -8,9 +8,9 @@
 <body>
   <h1>Super amature paralaxing</h1>
   <div onmousemove="parallax(this)" id="parallax-mountain">
-	<img src="../resources/parallax-mountain-bg.png" height="200" width="500" id="parallax-mountain-L0" style="z-index:-1; image-rendering: pixelated; position: absolute;" data-xrange= "0" data-yrange= "0">
-	<img src="../resources/parallax-mountain-l1.png" height="200" width="500" id="parallax-mountain-L1" style="z-index: 1; image-rendering: pixelated; position: absolute;" data-xrange="10" data-yrange= "5">
-	<img src="../resources/parallax-mountain-l2.png" height="200" width="500" id="parallax-mountain-L2" style="z-index: 2; image-rendering: pixelated; position: absolute;" data-xrange="20" data-yrange="10">
+	<img src="../resources/parallax-mountain-bg.png" height="200" width="500" class="pixel" id="parallax-mountain-L0" style="z-index:-1;" data-xrange= "0" data-yrange= "0">
+	<img src="../resources/parallax-mountain-l1.png" height="200" width="500" class="pixel" id="parallax-mountain-L1" style="z-index: 1;" data-xrange="10" data-yrange= "5">
+	<img src="../resources/parallax-mountain-l2.png" height="200" width="500" class="pixel" id="parallax-mountain-L2" style="z-index: 2;" data-xrange="20" data-yrange="10">
   </div>
   <br><br>
   <br><br>
@@ -18,6 +18,13 @@
   <br><br>
   <br><br>
   <br><br>
+  <div id="parallax-madness" onmousemove="parallax(this)">
+	<img src="../resources/parallax-mountain-bg.png" height="200" width="500" class="pixel" id="parallax-madness-L0" style="z-index:-1;" data-xrange= "0" data-yrange= "0">
+	<img src="../resources/parallax-mountain-l1.png" height="200" width="500" class="pixel" id="parallax-mountain-L1" style="z-index: 1;" data-xrange="3" data-yrange= "2">
+	<img src="../resources/parallax-mountain-l1.png" height="200" width="500" class="pixel" id="parallax-mountain-L2" style="z-index: 2;" data-xrange="7" data-yrange= "5">
+	
+	 
+ 
   <p id="para"></p>
 </body>
 </html>

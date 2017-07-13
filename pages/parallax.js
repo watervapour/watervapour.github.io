@@ -12,7 +12,7 @@ function parallax(caller){
 
 	// a for loop for unknown amount of elements
 	var elsExist = true;
-	var j = 1;
+	var j = 0;
 	while (elsExist == true) {
 		// get layer 
 		var layerId = initiator + "-L" + j;
@@ -24,8 +24,8 @@ function parallax(caller){
 			var xMove = rect.left + (mouseX * xPercent);
 			var yMove = rect.top + (mouseY * yPercent);
 			
-			//var info = [{"rectLeft":rect.left,"rectTop":rect.top,"MX":mouseX,"MY":mouseY,"X%":xPercent,"Y%":yPercent}]
-			//console.table(info);
+			var info = [{"rectLeft":rect.left,"rectTop":rect.top,"MX":mouseX,"MY":mouseY,"X%":xPercent,"Y%":yPercent}]
+			console.table(info);
 			layerElem.style.left = xMove + "px";
 			layerElem.style.top = yMove + "px";
 			
