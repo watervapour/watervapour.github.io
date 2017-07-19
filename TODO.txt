@@ -11,10 +11,19 @@ music:
 	custom media buttons
 
 parallax:
-	more examples all caling single function
+	allow various image sizes (move based on style .top/.left values)
 
 rainmeter:
-	add battery meters
+	add rainmeter how to / intro
+	package skins as rskins, and ini in a zip
+		music visualiser
+		battery meters
 
 warframe:
 	finish search tool
+
+la dee da styling
+	dynamic fill?
+	
+	circle
+	
