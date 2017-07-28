@@ -1,0 +1,58 @@
+* {
+	margin: auto;
+}
+
+body {
+  text-align: center;
+  background-color: RGB(180,180,180);
+  color: RGB(60,60,60);
+  font-family: "Times New Roman";
+  font-size: 20px;
+}  
+
+h1 {
+ color: RGB(102,204,255); 
+}
+
+a {
+ text-decoration: none;
+}
+a:link {
+  color: RGB(190,190,190);
+}
+a:visited {
+  color: RGB(100,100,100);
+}
+a:hover {
+  color: RGB(102,61,0);
+}
+a:active {  
+}
+
+img.pixel {
+	image-rendering: pixelated;
+	position: absolute;
+}
+
+img.greyscale {
+ -webkit-filter: grayscale(100%);
+}
+img.greyscale:hover {
+ -webkit-filter: grayscale(0%);
+}
+
+table, th, td {
+	border: 1px RGB(220,220,220);
+}
+
+
+div.slide {
+	width: 200px;
+	height: 100px;
+	background: RGB(200,200,200);
+	-webkit-transition: background 0.4s;
+}
+
+div.slide:hover {
+	background: RGB(220,220,220);
+}
