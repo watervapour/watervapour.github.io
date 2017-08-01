@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Step sequencer</title>
+</head>
+<body>
+  <div class="border">
+	<input type=button onclick="togglePause();" id="pauseButton" value="Play">
+    <table>
+	<tr>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	</tr>
+	<tr>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	</tr>
+	<tr>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	</tr>
+	<tr>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	  <td><div class="but off" onclick="cellClicked(this)"></div></td>
+	</tr>
+	</table>
+  </div>
+  
+  <audio data-instrument="0" src="./js30/1/sounds/clap.wav"></audio>
+  <audio data-instrument="1" src="./js30/1/sounds/snare.wav"></audio>
+  <audio data-instrument="2" src="./js30/1/sounds/kick.wav"></audio>
+  <audio data-instrument="3" src="./js30/1/sounds/boom.wav"></audio>
+<style>
+  body {
+    background: RGB(147,147,147);
+  }
+  
+  .border {
+    position: absolute;
+    top: 40%;
+	left: 40%;
+    box-shadow: 0px 0px 40px 5px black;
+  }
+  
+  .but {
+	width: 40px;
+	height: 30px;
+  }
+  
+  .but:hover {
+    box-shadow: 0px 0px 10px 2px black;
+  }
+  
+  .on {
+    background: #e2b571;
+  }
+  
+  .off {
+   background: RGB(200,200,200);
+  }
+  
+</style>
+<script>
+var col = -1;
+const pauseButton = document.getElementById("pauseButton");
+var pause = true;
+var stepper = null;
+var cellArray = [
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+];
+
+  function getRC(caller) {
+    var column = caller.parentElement.cellIndex;
+	var row = caller.parentElement.parentElement.rowIndex;
+	return [row, column];
+  }
+
+  function cellClicked(caller) {
+    console.log("Cell clicked!");
+	console.log(caller.className);
+    // toggle 'buttons'
+	if (caller.className == "but off"){
+	  //turning on
+	  caller.className = "but on";
+	  var rc = getRC(caller);
+	  cellArray[rc[0]][rc[1]] = 1; //set respective cell to 1
+	} else {
+	  //turning on
+	  caller.className = "but off";
+	  var rc = getRC(caller);
+	  cellArray[rc[0]][rc[1]] = 0; //set respective cell to 0
+	}
+	
+  }
+  
+  function playCol() {
+    if(col<7){
+	  col++;
+	} else {
+	  col = 0;
+	}
+    //console.log("play!")
+	//console.log("col " + col);
+    for(row=0;row<4;row++){
+	  //console.log("cA row col = "+cellArray[row][col]); 
+	  if(cellArray[row][col] == 1){
+	    //console.log("playing " + row);
+	    const audio = document.querySelector(`audio[data-instrument="${row}"]`);
+	    audio.currentTime=0;
+	    audio.play();
+	  } else {
+	    //console.log(row+":"+col+" nothign");
+	  }
+	}
+  }
+
+  
+  function togglePause(){
+    console.log("P/P called!");
+	console.log("P/P before: "+pause);
+    pause = !pause;
+	if(pause == true){
+	  pauseButton.value = "Play";
+	  clearInterval(stepper);
+	} else {
+	  pauseButton.value = "Pause";
+	  stepper = setInterval(playCol, 250);
+	  console.log("stepper called");
+	}
+	console.log("P/P after: "+pause);
+  }
+</script>
+</body>
+</html>
