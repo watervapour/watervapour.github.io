@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404</title>
+  
+</head>
+<script>
+function getRekt() {
+  var mouseX = event.clientX;
+  var mouseY = event.clientY;
+  var target = document.getElementById("404div");
+
+  console.log(target);
+  
+  target.style.top = mouseY+"px";
+  target.style.left = mouseX+"px";
+  
+  document.getElementById("para").innerHTML = mouseX +" : "+ mouseY;
+  
+}
+
+//setInterval(getRekt(), 500);
+
+</script>
+<body onmousemove="getRekt()">
+  
+  <div id="404div" style="position: absolute;">
+  <h1><span id="flash">404</span></h1>
+  </div>
+  
+  <h1><a href="https://github.com/watervapour/watervapour.github.io">watervapour.github.io</a></h1>
+  
+  <p id="para">AAA</p>
+  
+<style>
+html, body {
+  height: 100%;
+}
+<style>
+
+
+</body>
+</html
