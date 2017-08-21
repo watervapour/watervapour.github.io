@@ -1,0 +1,37 @@
+* {
+	margin: auto;
+}
+
+body {
+  text-align: center;
+  background-color: RGB(70,70,70);
+  color: RGB(150,150,150);
+  font-family: "Times New Roman";
+  font-size: 20px;
+}  
+
+#sidebar {
+  list-style-type: none;
+  margin: auto;
+  overflow: hidden;
+  padding: 0px;
+}
+
+#sidebar li {
+  float: left;
+  text-align: center;
+  border-right: 1px solid #909090;
+  border-bottom: 1px solid #909090;
+}
+#sidebar li:last-child {
+  border-right: none;	
+}
+
+#sidebar a {
+	display: block;
+	padding: 8px;
+	color: #66C6C4;
+}
+#sidebar a:visited {
+	color: #7BAEB0;
+}
