@@ -2,23 +2,45 @@
 <html>
 <head>
   <title>Music 2.0</title>
-  <link rel="stylesheet" href="../pages/stylesheet.css" type="text/css">
-  <script src="../pages/music_2.js">
+  <script src="./music_2.js"></script>
 </head>
+
 <body>
   <h1>Music 2.0</h1>
 
   
+  <input type="button" value="<" onclick="previous()">
+  <input type="button" value="Play" onclick="playMusic()">
+  <input type="button" value=">" onclick="next()">
+  <br>
+  <input type="button" value="+" onclick="volUp()">
+  <br>
+  <input type="button" value="-" onclick="volDown()">
+  
+  <div width="200" height="200" style="background:black;" onclick="playMusic()">
+  aaa
+  </div>
+  aa
   
   
   
   
-  
-  
-  
-  
-  <audio src="../resources/music-me-RLinspired.mp3"></audio>
-  <audio src="../resources/music-me-upbeat.mp3"></audio>
-  <audio src="../resources/Infineract/Retrograde.mp3"></audio>
+  <audio data-song='1' src="../resources/music-me-RLinspired.mp3"></audio>
+  <audio data-song='2'src="../resources/music-me-upbeat.mp3"></audio>
+  <audio data-song='3'src="../resources/Infineract/Retrograde.mp3"></audio>
 </body>
+<style>
+  * {
+	font-family: Helvetica;
+  }
+  
+  body {
+    background: #0A0A0A;
+    color: #D0D0D0;
+  }
+  
+  h1 {
+    font-family: Impact;
+  }
+</style>
 </html>
