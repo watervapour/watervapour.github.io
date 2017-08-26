@@ -44,3 +44,8 @@ img.greyscale:hover {
 table, th, td {
 	border: 1px solid black;
 }
+
+ul, ol {
+  list-style: none;
+  padding: 0px;
+}
