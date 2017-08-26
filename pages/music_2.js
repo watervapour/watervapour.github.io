@@ -19,6 +19,7 @@ function init() {
   
   information = document.getElementById('info');
   
+  numSongs = trackList.length/2;
   vol = 0.5;
   track = 1;
   audioElement = document.getElementById('audioElement');
@@ -34,10 +35,10 @@ function setTrack(clicked, url){
   playMusic();
 }
 
-
 function changeTrack(direction) {
   audioElement.pause();
   track += direction;
+  validate("track", track);
   src = trackList[(track*2)-1];
   console.log('src = '+src);
   audioElement.src = src;
@@ -80,7 +81,30 @@ function volDown() {
   audioElement.volume = vol;
 }
 
+function changeVol(direction) {
+  vol += direction;
+  validate("vol", vol);
+  updateUI();  
+  audioElement.volume = vol;
+}
 
+//utility
+
+function validate(type, value) {
+  if(type === "track") {
+	if(value < 1) {
+      track = 1;
+	} else if(value > numSongs) {
+      track = numSongs;
+	}	
+  } else {
+	if(value < 0) {
+      vol = 0;
+	} else if(value > 1) {
+	  vol = 1;	
+	}
+  }
+}
 
 function updateUI() {
   information.innerHTML = ("Track: "+track+" Volume: "+vol);
