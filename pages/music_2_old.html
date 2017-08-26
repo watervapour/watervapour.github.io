@@ -2,16 +2,17 @@
 <html>
 <head>
   <title>Music 2.0</title>
-  <script src="./music_2_tracklist.js"></script>
   <script src="./music_2.js"></script>
 </head>
 
 <body onload="init()">
   <h1>Music 2.0</h1>
+
   
-  <input type="button" id="buttonPrev" value="<" onclick="changeTrack(-1)">
+  
+  <input type="button" id="buttonPrev" value="<" onclick="previous()">
   <input type="button" id="buttonPlay" value="Play" onclick="togglePause()">
-  <input type="button" id="buttonNext" value=">" onclick="changeTrack(+1)">
+  <input type="button" id="buttonNext" value=">" onclick="next()">
   <br>
   <input type="button" id="buttonVolU" value="▲" onclick="volUp()">
   <br>
@@ -19,11 +20,16 @@
   
   <p id="info"/>
   
-  <ul class="songList" id="songList">
+  <ul class="songlist">
+    <li data-track="1" onclick="setTrack(this)">RL inspired</li>
+	<li data-track="2" onclick="setTrack(this)">upbeat</li>
+	<li data-track="3" onclick="setTrack(this)">Retrograde</li>
   </ul>
   
   
-  <audio id="audioElement"></audio>
+  <audio data-song='1' src="../resources/music-me-RLinspired.mp3"></audio>
+  <audio data-song='2'src="../resources/music-me-upbeat.mp3"></audio>
+  <audio data-song='3'src="../resources/Infineract/Retrograde.mp3"></audio>
 </body>
 <style>
   * {
@@ -39,13 +45,6 @@
   h1 {
     font-family: Impact;
 	color: linear-gradient(red, yellow);;
-  }
-  
-  ul, ol {
-    list-style: none;
-  }
-  li:before {
-    content: '\21F0 ';
   }
 </style>
 </html>

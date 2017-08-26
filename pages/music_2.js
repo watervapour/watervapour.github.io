@@ -1,65 +1,93 @@
 function init() {
-	console.log('init');
-  // controls if need be
-  const buttonPrev = document.getElementById("buttonPrev");
-  const buttonPlay = document.getElementById("buttonPlay");
-  const buttonNext = document.getElementById("buttonNext");
-  const buttonVolU = document.getElementById("buttonVolU");
-  const buttonVolD = document.getElementById("buttonVolD");
+  //populate the track list	
+  listElement = document.getElementById('songList');  
+  for(i=0;i<trackList.length;i+=2) {
+    var li = document.createElement('li');
+	li.innerHTML = trackList[i]
+	li.setAttribute('id', 'track_'+(i/2+1));
+	li.setAttribute('data', `trackNum:${(i/2+1)}`);
+	li.setAttribute('onclick', `setTrack(this, "${trackList[i+1]}")`);
+	listElement.appendChild(li);
+  }
   
-  var vol = 0.5;
-  var track = 3
-  var song = document.querySelector(`audio[data-song="${track}"]`);
-  var paused = true;
+  // controls if need be
+  buttonPrev = document.getElementById('buttonPrev');
+  buttonPlay = document.getElementById('buttonPlay');
+  buttonNext = document.getElementById('buttonNext');
+  buttonVolU = document.getElementById('buttonVolU');
+  buttonVolD = document.getElementById('buttonVolD');
+  
+  information = document.getElementById('info');
+  
+  vol = 0.5;
+  track = 1;
+  audioElement = document.getElementById('audioElement');
+  audioElement.src = trackList[1];
+  paused = true;
+  updateUI();
 }
-init();
 
-function setTrack(clicked){
-  song.pause();
-  track = clicked.dataset.track;
+function setTrack(clicked, url){
+  audioElement.pause();
+  track = clicked.dataset.trackNum;
+  audioElement.src = url;
   playMusic();
 }
 
-function previous() {
-  song.pause();
-  track -= 1;
-  alert('track is now '+track);
-  song.current
-  playmusic();
+
+function changeTrack(direction) {
+  audioElement.pause();
+  track += direction;
+  src = trackList[(track*2)-1];
+  console.log('src = '+src);
+  audioElement.src = src;
+  playMusic();
 }
-function next() {
-  song.pause();
-  track += 1;
-  alert('track is now '+track);
-  playmusic();
-}
+
+
 
 function togglePause(){
   paused = !paused;
   if(paused === true) {
-	buttonPlay.value = "Play";  
+	updateUI();
+    audioElement.pause();	
   } else {
-	buttonPlay.value = "Pause";
-    song.play();	
+    updateUI();
+    audioElement.play();	
   }
 }
 
 function playMusic() {
-  var song = document.querySelector(`audio[data-song="${track}"]`);
-  if(!song) return;
-  song.currentTime = 0;
-  song.play();
-  song.volume = vol;
+  paused = false;
+  if(!audioElement) return;
+  updateUI();
+  audioElement.currentTime = 0;
+  audioElement.play();
+  audioElement.volume = vol;
 }
+
+
 
 function volUp() {
   vol += 0.1;
-  alert('The volume is now '+vol);
-  song.volume = vol;
+  updateUI();
+  audioElement.volume = vol;
 }
 
-function voldDown() { 
+function volDown() { 
   vol -= 0.1;
-  alert('The volume is now '+vol);
-  song.volume = vol;
+  updateUI();
+  audioElement.volume = vol;
+}
+
+
+
+function updateUI() {
+  information.innerHTML = ("Track: "+track+" Volume: "+vol);
+  if(paused === true) {
+    buttonPlay.value = "Play";	  
+  } else {
+	buttonPlay.value = "Pause";  
+  }
+  
 }
