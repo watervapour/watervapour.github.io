@@ -1,15 +1,4 @@
 function init() {
-  //populate the track list	
-  listElement = document.getElementById('songList');  
-  for(i=0;i<trackList.length;i+=2) {
-    var li = document.createElement('li');
-	li.innerHTML = trackList[i]
-	li.setAttribute('id', 'track_'+(i/2+1));
-	li.setAttribute('data', `trackNum:${(i/2+1)}`);
-	li.setAttribute('onclick', `setTrack(this, "${trackList[i+1]}")`);
-	listElement.appendChild(li);
-  }
-  
   // controls if need be
   buttonPrev = document.getElementById('buttonPrev');
   buttonPlay = document.getElementById('buttonPlay');
@@ -19,7 +8,6 @@ function init() {
   
   information = document.getElementById('info');
   
-  numSongs = trackList.length/2;
   vol = 0.5;
   track = 1;
   audioElement = document.getElementById('audioElement');
@@ -39,7 +27,7 @@ function changeTrack(direction) {
   audioElement.pause();
   track += direction;
   validate("track", track);
-  src = trackList[(track*2)-1];
+  src = trackList[(track*elsPerSong)-1];
   console.log('src = '+src);
   audioElement.src = src;
   playMusic();
@@ -94,8 +82,8 @@ function validate(type, value) {
   if(type === "track") {
 	if(value < 1) {
       track = 1;
-	} else if(value > numSongs) {
-      track = numSongs;
+	} else if(value > numTracks) {
+      track = numTracks;
 	}	
   } else {
 	if(value < 0) {
